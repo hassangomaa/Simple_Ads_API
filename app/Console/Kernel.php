@@ -16,6 +16,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // our Email CMD to check every day !
+        //Hint : this needs to be hosted on a server
+        $schedule->command('auto:AdReminder')->daily();
+
     }
 
     /**
