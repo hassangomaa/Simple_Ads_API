@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AdsResources;
 use App\Models\Ads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -109,8 +110,8 @@ class AdsController extends Controller
      */
     public function show()
     {
-        $ads = Reel::all();
-        $ad =  ReelResource::collection($ads) ;
+        $ads = Ads::all();
+        $ad =  AdsResources::collection($ads) ;
 
         return $this -> returnData('Table OF Ads admins only!!',$ad);
 

@@ -13,11 +13,14 @@ class Ads extends Model
     protected $fillable =[
         #only allow the public data
     ];
-    #security Filter
+
+
+    #security Filter from XSS and JS - client server side attacks!
     protected $casts = [
-        '1#'=> CleanHtml::class,
-        '2#'=> CleanHtml::class,
-        '3#'=> CleanHtml::class,
+        'start_date' => 'datetime',
+//         '1#'=> CleanHtml::class,
+//        '2#'=> CleanHtml::class,
+//        '3#'=> CleanHtml::class,
     ];
 
 
