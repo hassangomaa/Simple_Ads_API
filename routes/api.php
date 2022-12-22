@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\API\AdsController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\TagController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,11 +33,18 @@ Route::get('/v1', function () {
 //Route::resource('/slide-show', 'SlideShowController');
 //Route::post('/slide-show/toggleActive/{slideShow}', 'SlideShowController@toggleActive')->name('slide-show.toggleActive');
 //
-//Route::group(['middleware' => ['api','XssSanitizer'], 'namespace' => 'Api'], function () {
+Route::group(['middleware' => ['api', 'XssSanitizer'], 'namespace' => 'Api'], function () {
+    // 
+    Route::resources([
+        'ads' => AdsController::class,
+        'tags' => TagController::class,
+        'categories' => CategoryController::class,
+    ]);
+    //Route::resource('/slide-show', 'SlideShowController');
 
-    Route::get('ads', [AdsController::class,'index']);
-//    Route::get('/ads', 'index@AdsController')->name('all_ads');
-//});
+    // Route::get('ads', [AdsController::class,'index']);
+    //    Route::get('/ads', 'index@AdsController')->name('all_ads');
+});
 
 
 
@@ -52,4 +62,3 @@ Route::get('/v1', function () {
 //    Route::post('update', [\App\Http\Controllers\API\ReelController::class, 'update']);
 //    Route::post('destroy', [\App\Http\Controllers\API\ReelController::class, 'destroy']);
 //});
-
